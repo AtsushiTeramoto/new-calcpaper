@@ -69,8 +69,8 @@ texfilestring n (year,month,_) p xs = forM_ xs $ \x -> do
     _ -> putTexString x
     where
       pagelist = map pagecommand $ do
-        part <- [1..p]
-        halfpage <- map ((+) (16 * (part - 1))) [0..7]
+        part <- [0..(p-1)]
+        halfpage <- map ((+) (16 * part)) [0..7]
         [halfpage, halfpage + 8]
       pagecommand np = do
         putTexString $ "\\"
